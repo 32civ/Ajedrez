@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101f1c" />
+  <meta name="description" content="Juega una partida local de ajedrez entre dos personas con nombres y reloj opcional." />
+  <title>Jugar | Enroque</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="index.html" aria-label="Enroque, inicio"><span class="brand-mark">♞</span><span>ENROQUE<span class="brand-dot">.</span></span></a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link current" href="juego.html" aria-current="page">Jugar</a>
+        <button type="button" class="nav-play nav-button" id="new-game-nav">Nueva partida <span aria-hidden="true">↗</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="game-main page-shell">
+    <div class="game-topbar">
+      <div><span class="eyebrow dark-eyebrow">LA MESA ESTÁ LISTA</span><h1>La partida <em>comienza aquí.</em></h1><p>Elige una pieza y selecciona una casilla marcada para mover.</p></div>
+      <span class="game-mode-tag"><span class="mode-led"></span> 2 jugadores · local</span>
+    </div>
+
+    <div class="game-layout">
+      <section class="board-column" aria-label="Zona de ajedrez">
+        <div class="player-strip" id="black-strip">
+          <div class="player-identity"><div class="player-icon black-icon">♚</div><div><small>PIEZAS NEGRAS</small><strong id="black-player">Negras</strong></div></div>
+          <div class="clock-display" id="clock-box-black" aria-label="Reloj de negras"><span class="clock-label">TIEMPO</span><strong id="clock-black" class="clock-time">Sin reloj</strong></div>
+        </div>
+
+        <div class="board-frame"><div class="chess-board" id="chess-board" role="group" aria-label="Tablero de ajedrez de 8 por 8"></div></div>
+
+        <div class="player-strip player-strip-white" id="white-strip">
+          <div class="player-identity"><div class="player-icon white-icon">♔</div><div><small>PIEZAS BLANCAS</small><strong id="white-player">Blancas</strong></div></div>
+          <div class="clock-display" id="clock-box-white" aria-label="Reloj de blancas"><span class="clock-label">TIEMPO</span><strong id="clock-white" class="clock-time">Sin reloj</strong></div>
+        </div>
+        <p class="board-tip">Consejo: los puntos indican movimientos posibles; los aros marcan capturas.</p>
+      </section>
+
+      <aside class="game-sidebar">
+        <section class="info-card turn-card">
+          <span class="card-eyebrow"><span class="status-ping"></span> ESTADO DE LA PARTIDA</span>
+          <h2 id="turn-heading">Preparando partida…</h2>
+          <p id="game-message" role="status" aria-live="polite">Introduce los nombres para empezar.</p>
+          <div class="turn-divider"></div>
+          <div class="turn-bottom"><span>Turno actual</span><span id="turn-color" class="turn-pill">Blancas</span></div>
+        </section>
+        <section class="info-card capture-card">
+          <h2>Piezas capturadas</h2>
+          <div class="capture-group"><div class="capture-header"><span>Por <strong id="capturer-white">Blancas</strong></span><span class="capture-count" id="capture-count-white">0</span></div><div class="captured-list" id="captured-white">Ninguna todavía</div></div>
+          <div class="capture-group"><div class="capture-header"><span>Por <strong id="capturer-black">Negras</strong></span><span class="capture-count" id="capture-count-black">0</span></div><div class="captured-list" id="captured-black">Ninguna todavía</div></div>
+        </section>
+        <section class="info-card actions-card">
+          <h2>Control de partida</h2>
+          <button class="button button-primary action-full" id="new-game" type="button">↻ <span>Nueva partida</span></button>
+          <button class="button button-outline action-full" id="pause-clock" type="button" disabled>⏸ <span id="pause-label">Pausar reloj</span></button>
+          <p id="clock-help" class="clock-help">Configura un reloj al empezar, o juega sin tiempo.</p>
+        </section>
+        <section class="info-card history-card">
+          <h2>Últimos movimientos</h2>
+          <ol class="move-list" id="move-history"><li class="empty-history">Aún no hay movimientos.</li></ol>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Se abre automáticamente al entrar y cada vez que se inicia una nueva partida. -->
+  <dialog class="setup-dialog" id="setup-dialog" aria-labelledby="setup-title">
+    <form id="setup-form">
+      <div class="setup-head"><div class="setup-icon">♞</div><span class="eyebrow dark-eyebrow">ANTES DE HACER TU JUGADA</span><h2 id="setup-title">Prepara la <em>partida.</em></h2><p>¿Quién se enfrenta hoy? Escribe sus nombres y decide si jugarán con reloj.</p></div>
+      <div class="setup-fields">
+        <label for="name-white"><span>Jugador con blancas</span><input type="text" id="name-white" name="white" placeholder="Ej. David" maxlength="22" required autocomplete="off" /></label>
+        <label for="name-black"><span>Jugador con negras</span><input type="text" id="name-black" name="black" placeholder="Ej. Laura" maxlength="22" required autocomplete="off" /></label>
+      </div>
+      <div class="timer-settings"><label class="switch-row" for="enable-clock"><span class="switch-description"><strong>Jugar con reloj</strong><small>El tiempo corre para quien tiene el turno.</small></span><span class="toggle-switch"><input type="checkbox" id="enable-clock" /><span class="toggle-track"></span></span></label>
+        <label class="time-selector" for="time-choice" id="time-selector"><span>Tiempo por jugador</span><select id="time-choice" disabled><option value="3">3 minutos · Rápida</option><option value="5">5 minutos · Blitz</option><option value="10" selected>10 minutos · Clásica corta</option><option value="15">15 minutos · Tranquila</option><option value="30">30 minutos · Larga</option></select></label>
+      </div>
+      <p class="setup-error" id="setup-error" role="alert" hidden></p>
+      <button type="submit" class="button button-primary setup-submit">Empezar a jugar <span aria-hidden="true">↗</span></button>
+      <button type="button" class="setup-cancel" id="setup-cancel" hidden>Seguir con la partida actual</button>
+    </form>
+  </dialog>
+  <footer class="site-footer"><div class="page-shell footer-inner"><span>♞ ENROQUE.</span><span>Cada movimiento cuenta.</span><a href="index.html">Volver al inicio ↗</a></div></footer>
+</body>
+</html>

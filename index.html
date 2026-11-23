@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101f1c" />
+  <meta name="description" content="Juega ajedrez con otra persona en el mismo dispositivo. Sin registro, con reloj opcional y reglas de ajedrez." />
+  <title>Enroque | Ajedrez en compañía</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body class="home-page">
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="index.html" aria-label="Enroque, inicio"><span class="brand-mark">♞</span><span>ENROQUE<span class="brand-dot">.</span></span></a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-link current" href="index.html" aria-current="page">Inicio</a>
+        <a class="nav-link" href="#como-funciona">Cómo funciona</a>
+        <a class="nav-play" href="juego.html">Ir al juego <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-shell" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> AJEDREZ PARA DOS, EN UN MISMO LUGAR</span>
+        <h1 id="hero-title">Tu próximo gran <em>movimiento</em> empieza aquí.</h1>
+        <p class="hero-lead">Un tablero, dos mentes y todas las posibilidades. Reta a quien tengas al lado y disfruta del ajedrez clásico, sin descargas ni registros.</p>
+        <div class="hero-actions">
+          <a class="button button-primary button-large" href="juego.html">Comenzar partida <span aria-hidden="true">↗</span></a>
+          <a class="button button-ghost" href="#como-funciona">Descubre cómo funciona <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-proof"><span class="proof-icon">✓</span> Gratis y local <span class="proof-divider"></span> <span class="proof-icon">✓</span> Sin instalar nada</div>
+      </div>
+      <div class="hero-visual" aria-label="Vista previa del tablero">
+        <div class="preview-halo"></div>
+        <div class="preview-topline"><span>PARTIDA LOCAL</span><span class="live-indicator"><i></i> LISTO PARA JUGAR</span></div>
+        <div class="preview-frame"><div class="preview-board" id="preview-board" aria-hidden="true"></div></div>
+        <div class="preview-footer"><div><span class="preview-avatar">♙</span><div><strong>Tu turno</strong><small>La siguiente jugada es tuya</small></div></div><span class="preview-pulse">●</span></div>
+        <div class="floating-note"><span>♜</span><div><strong>Piensa. Juega. Repite.</strong><small>Cada partida cuenta una historia.</small></div></div>
+      </div>
+    </section>
+
+    <section class="features-wrap" id="como-funciona" aria-labelledby="features-title">
+      <div class="page-shell">
+        <div class="section-heading"><div><span class="eyebrow dark-eyebrow">TODO LO QUE NECESITAS</span><h2 id="features-title">Sencillo de empezar.<br /><em>Difícil de dejar.</em></h2></div><p>Sin complicaciones ni distracciones. Solo el placer de una buena partida frente a frente.</p></div>
+        <div class="feature-grid">
+          <article class="feature-card"><div class="feature-icon">♔</div><span class="feature-index">01 /</span><h3>Dos jugadores</h3><p>Escriban sus nombres antes de empezar y vean de quién es cada turno.</p></article>
+          <article class="feature-card"><div class="feature-icon feature-icon-accent">◷</div><span class="feature-index">02 /</span><h3>Reloj a tu ritmo</h3><p>Activa un reloj de ajedrez con el tiempo que elijan, o juega sin límite.</p></article>
+          <article class="feature-card"><div class="feature-icon">♘</div><span class="feature-index">03 /</span><h3>Movimientos legales</h3><p>Consulta las casillas disponibles, captura piezas y busca el jaque mate.</p></article>
+        </div>
+        <div class="bottom-cta"><div><span>¿Preparados para el primer movimiento?</span><h3>El tablero los espera.</h3></div><a class="button button-light" href="juego.html">Jugar ahora <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="page-shell footer-inner"><span>♞ ENROQUE.</span><span>El mejor rival está a tu lado.</span><span>Hecho para jugar juntos.</span></div></footer>
+</body>
+</html>
